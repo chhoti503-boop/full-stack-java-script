@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    :root {
+      --bg-color: #f4f4f4;
+      --text-color: #222;
+      --header-footer-bg: #fff;
+      --sidebar-bg: #e4e4e4;
+      --accent-color: #007bff;
+    }
+
+    body.dark {
+      --bg-color: #1f1f1f;
+      --text-color: #eee;
+      --header-footer-bg: #2c2c2c;
+      --sidebar-bg: #333;
+      --accent-color: #0d6efd;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: auto 1fr auto;
+      height: 100vh;
+    }
+
+    .header {
+      grid-area: header;
+      background-color: var(--header-footer-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      background-color: var(--sidebar-bg);
+      padding: 2rem 1rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 0.5rem 1rem;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      color: var(--text-color);
+      border-radius: 5px;
+    }
+
+    .sidebar a:hover {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    .main-content {
+      grid-area: main;
+      padding: 2rem;
+    }
+
+    .footer {
+      grid-area: footer;
+      background-color: var(--header-footer-bg);
+      text-align: center;
+      padding: 1rem;
+      border-top: 1px solid #ccc;
+    }
+
+    #theme-toggle {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <header class="header">
+      <h1>Admin Dashboard</h1>
+      <button id="theme-toggle">🌙</button>
+    </header>
+
+    <aside class="sidebar">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Users</a></li>
+          <li><a href="#">Settings</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <h2>Welcome to the Admin Dashboard</h2>
+      <p>This is where your data visualization or reports will appear.</p>
+    </main>
+
+    <footer class="footer">
+      &copy; 2025 Your Company. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggleBtn.textContent = document.body.classList.contains('dark') ? '☀' : '🌙';
+    });
+  </script>
+</body>
+</html>
